@@ -1,8 +1,8 @@
 import express from 'express'
 import cors from 'cors'
-//import mongodb from 'mongodb'
 import 'dotenv/config'
-import mongodb , {MongoClient} from 'mongodb'
+//@ts-ignore
+import { MongoClient } from 'mongodb'
 
 const app = express()
 
@@ -19,7 +19,7 @@ app.post('/', async (req, res) => {
 
   const newCustomer = await customers.insertOne(req.body)
 
-  res.status(200).send('Items Received')
+  res.status(200).send(newCustomer)
 })
 
-app.listen(process.env.PORT, () => console.log('api listening on 4000 🐳 🦧'))
+app.listen(process.env.PORT, () => console.log(`api listening on ${process.env.PORT} 🐳 🦧`))
